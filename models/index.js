@@ -26,4 +26,7 @@ db.comment.belongsTo(db.post, { foreignkey: "post_Id" });
 db.post.hasMany(db.reply, { foreignkey: "post_Id" });
 db.reply.belongsTo(db.post, { foreignkey: "post_Id" });
 
+db.comment.hasMany(db.reply, { foreignkey: "id" });
+db.reply.belongsTo(db.comment, { foreignkey: "id" });
+
 module.exports = db;

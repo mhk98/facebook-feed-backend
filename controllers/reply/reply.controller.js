@@ -3,9 +3,15 @@ const Reply = db.reply;
 
 exports.createreply = async (req, res) => {
   try {
-    const { content } = req.body;
+    const { postId, commentId, replyText } = req.body;
 
-    const reply = await Reply.create(content);
+    console.log(req.body);
+    const data = {
+      content: replyText,
+      postPostId: postId,
+      commentId: commentId,
+    };
+    const reply = await Reply.create(data);
     console.log("result", req.file);
     res.status(200).send({
       status: "Success",

@@ -5,6 +5,8 @@ exports.createcomment = async (req, res) => {
   try {
     const { content, postPostId } = req.body;
 
+    // const text = JSON.parse(content);
+    console.log(content);
     const comment = await Comment.create({
       content,
       postPostId,
