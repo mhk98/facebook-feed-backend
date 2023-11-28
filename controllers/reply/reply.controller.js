@@ -73,10 +73,10 @@ exports.singlereply = async (req, res) => {
 };
 exports.deletereply = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { postId, commentId, replyId } = req.params;
 
     const reply = await Reply.destroy({
-      where: { Id: id },
+      where: { postPostId: postId, commentId: commentId, id: replyId },
     });
 
     if (!reply) {
@@ -101,10 +101,13 @@ exports.deletereply = async (req, res) => {
 
 exports.updatereply = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = req.body;
-    const reply = await Reply.update(data, {
-      where: { Id: id },
+    const { postId, commentId, replyId } = req.params;
+
+    
+
+  
+    const reply = await Reply.update(req.body, {
+      where: { postPostId: postId, commentId: commentId, id: replyId },
     });
 
     if (!reply) {

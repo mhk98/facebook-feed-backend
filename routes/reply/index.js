@@ -5,7 +5,7 @@ const auth = require("../../middlewares/auth");
 router.get("/", reply.getAllreply);
 // router.get("/:id", auth("user", "admin"), report.singleReport);
 router.post("/create-reply", reply.createreply);
-router.delete("/:id", reply.deletereply);
-router.put("/:id", reply.updatereply);
+router.delete("/:postId/:commentId/:replyId", reply.deletereply);
+router.put("/:postId/:commentId/:replyId", reply.updatereply);
 
 module.exports = router;
