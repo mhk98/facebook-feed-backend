@@ -7,6 +7,6 @@ router.get("/",  post.getAllpost);
 // router.get("/:id", auth("user", "admin"), report.singleReport);
 router.post("/create-post", upload,  post.createpost);
 router.delete("/:id", post.deletepost);
-router.put("/:id", post.updatepost);
+router.put("/:id",upload, post.updatepost);
 
 module.exports = router;

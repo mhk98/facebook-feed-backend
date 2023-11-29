@@ -3,17 +3,12 @@ const Post = db.post;
 
 exports.createpost = async (req, res) => {
   try {
-    const {
-      content,
-      background,
-      
-    } = req.body;
+    const { content, background } = req.body;
 
     const data = {
       content,
       Image: req.file.path,
       background,
-      
     };
     const post = await Post.create(data);
     console.log("result", req.file);
@@ -106,7 +101,12 @@ exports.deletepost = async (req, res) => {
 exports.updatepost = async (req, res) => {
   try {
     const { id } = req.params;
-    const data = req.body;
+    const { content } = req.body;
+    const data = {
+      content,
+      Image: req.file.path || undefined,
+    };
+    console.log("editPost", req.body);
     const post = await Post.update(data, {
       where: { post_Id: id },
     });
