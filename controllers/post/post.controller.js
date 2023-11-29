@@ -104,7 +104,7 @@ exports.updatepost = async (req, res) => {
     const { content } = req.body;
     const data = {
       content,
-      Image: req.file.path || undefined,
+      Image: req.file.path ,
     };
     console.log("editPost", req.body);
     const post = await Post.update(data, {
